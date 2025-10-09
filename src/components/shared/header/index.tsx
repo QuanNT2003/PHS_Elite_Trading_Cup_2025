@@ -5,7 +5,7 @@ import { Separator } from "@/components/ui/separator";
 import { Menu, X } from "lucide-react";
 import phs_logo from "@/assets/image/phs_logo.png";
 import uel_logo from "@/assets/image/uel_logo.png";
-import { RegisterComp } from "../registerComp";
+import { RegisterPage } from "@/pages/RegisterPage";
 
 function HeaderComp() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -90,7 +90,7 @@ function HeaderComp() {
           </Button>
         </div>
       )}
-      <RegisterComp open={openRegister} setOpen={setOpenRegister} />
+      <RegisterPage open={openRegister} setOpen={setOpenRegister} />
     </header>
   );
 }

@@ -23,7 +23,8 @@ type InputTextProps = {
   number?: boolean;
   //   type?: string;
   error?: string;
-  description?: string;
+  description?: React.ReactNode;
+  show?: boolean;
 };
 function InputComp({
   title,
@@ -36,9 +37,10 @@ function InputComp({
   //   type,
   error,
   description,
+  show,
 }: InputTextProps) {
   return (
-    <div className="mx-2 w-full">
+    <div className="ms-2 w-full flex flex-col gap-1">
       <div className="font-medium mb-[3px] text-[20px]">
         {title}
         {required && <span className="text-red-500"> *</span>}
@@ -71,7 +73,16 @@ function InputComp({
           </button>
         )}
       </div>
-      {error ? (
+      {show ? (
+        <div>
+          <div className="text-[#89918a] mt-[5px] ml-[5px] mr-[3px] text-[14px]">
+            {description}
+          </div>
+          <div className="text-red-500 mt-[5px] ml-[5px] mr-[3px] text-[14px]">
+            {error}
+          </div>
+        </div>
+      ) : error ? (
         <div className="text-red-500 mt-[5px] ml-[5px] mr-[3px] text-[14px]">
           {error}
         </div>

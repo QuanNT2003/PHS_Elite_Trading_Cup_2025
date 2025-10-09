@@ -5,16 +5,24 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useEffect, useState } from "react";
-import InputComp from "../inputComp";
+import InputComp from "../../components/shared/inputComp";
 type props = {
   open?: boolean;
   setOpen?: (value: boolean) => void;
 };
-export function RegisterComp({ open, setOpen }: props) {
+export function RegisterPage({ open, setOpen }: props) {
   const [account, setAccount] = useState("");
+  const [errorAccount, setErrorAccount] = useState("");
+
   const [email, setEmail] = useState("");
+  const [errorEmail, setErrorEmail] = useState("");
+
   const [phone, setPhone] = useState("");
+  const [errorPhone, setErrorPhone] = useState("");
+
   const [otp, setOtp] = useState("");
+  const [errorOtp, setErrorOtp] = useState("");
+
   const [stepTwo, setStepTwo] = useState(false);
   const [buttonDisable, setButtonDisable] = useState(true);
   const [time, setTime] = useState(90); // bắt đầu từ 60s
@@ -46,6 +54,17 @@ export function RegisterComp({ open, setOpen }: props) {
     }
   }, [account, email, phone, otp, stepTwo]);
 
+  useEffect(() => {
+    setAccount("");
+    setEmail("");
+    setPhone("");
+    setOtp("");
+    setErrorAccount("");
+    setErrorEmail("");
+    setErrorPhone("");
+    setErrorOtp("");
+  }, [open]);
+
   const onClick = () => {
     if (stepTwo === false) {
       setStepTwo(true);
@@ -57,7 +76,7 @@ export function RegisterComp({ open, setOpen }: props) {
       {/* <DialogTrigger asChild>
         <Button variant="outline">Edit Profile</Button>
       </DialogTrigger> */}
-      <DialogContent className="sm:max-w-[600px] bg-white">
+      <DialogContent className="sm:max-w-[600px] bg-white flex flex-col gap-3">
         <DialogHeader>
           <DialogTitle className="text-[#24723B] font-semibold text-[32px] text-center">
             Đăng ký
@@ -67,6 +86,7 @@ export function RegisterComp({ open, setOpen }: props) {
           value={account}
           onChange={setAccount}
           title="Số tài khoản"
+          error={errorAccount}
           description={
             <div>
               Số tài khoản bắt đầu bằng 022C (Ví dụ: 022C111234). Nếu chưa có
@@ -85,10 +105,12 @@ export function RegisterComp({ open, setOpen }: props) {
           onChange={setEmail}
           title="Email"
           description="Là Email đăng ký tài khoản chứng khoán."
+          error={errorEmail}
         />
         <InputComp
           value={phone}
           onChange={setPhone}
+          error={errorPhone}
           title="Số điện thoại"
           description="Là số điện thoại đăng ký tài khoản chứng khoán"
         />
@@ -110,6 +132,8 @@ export function RegisterComp({ open, setOpen }: props) {
                 )}
               </p>
             }
+            error={errorOtp}
+            show
           />
         )}
         <button
