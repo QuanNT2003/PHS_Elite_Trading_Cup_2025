@@ -1,4 +1,5 @@
 import { Input } from "@/components/ui/input";
+import { X } from "lucide-react";
 const addCommas = (num: string) => {
   if (Number(num) === 0) return "0";
 
@@ -37,17 +38,17 @@ function InputComp({
   description,
 }: InputTextProps) {
   return (
-    <div className="mx-2">
+    <div className="mx-2 w-full">
       <div className="font-medium mb-[3px] text-[20px]">
         {title}
         {required && <span className="text-red-500"> *</span>}
       </div>
-      <div>
+      <div className="relative w-full">
         <Input
           className={
             error
-              ? "border-[#D83434] rounded-[4px] p-[16px] gap-[4px] text-[18px]"
-              : "border-black rounded-[4px] p-[16px] gap-[4px] text-[18px]"
+              ? "border-[#D83434] rounded-[4px] p-[16px] pe-10 gap-[4px] text-[18px] w-full"
+              : "border-black rounded-[4px] p-[16px] pe-10 gap-[4px] text-[18px] w-full"
           }
           placeholder={placeholder}
           value={value}
@@ -61,6 +62,14 @@ function InputComp({
             }
           }}
         />
+        {value && (
+          <button
+            onClick={() => onChange?.("")}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        )}
       </div>
       {error ? (
         <div className="text-red-500 mt-[5px] ml-[5px] mr-[3px] text-[14px]">

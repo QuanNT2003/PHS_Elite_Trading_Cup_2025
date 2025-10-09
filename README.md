@@ -71,4 +71,3 @@ export default defineConfig([
   },
 ])
 ```
-# PHS_Elite_Trading_Cup_2025

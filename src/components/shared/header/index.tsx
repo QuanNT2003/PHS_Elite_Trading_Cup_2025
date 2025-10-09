@@ -5,10 +5,11 @@ import { Separator } from "@/components/ui/separator";
 import { Menu, X } from "lucide-react";
 import phs_logo from "@/assets/image/phs_logo.png";
 import uel_logo from "@/assets/image/uel_logo.png";
+import { RegisterComp } from "../registerComp";
 
 function HeaderComp() {
   const [openMenu, setOpenMenu] = useState(false);
-
+  const [openRegister, setOpenRegister] = useState(false);
   const navItems = [
     { to: "/", label: "Giải thưởng" },
     { to: "/rules", label: "Thể lệ" },
@@ -47,7 +48,10 @@ function HeaderComp() {
 
         {/* Button đăng ký */}
         <div className="hidden md:flex items-center">
-          <Button className="bg-[#24723B] text-white cursor-pointer hover:bg-[#24723b9f] rounded-[4px] w-[135px] h-[48px] px-[32px] py-[16px] text-[18px] font-medium">
+          <Button
+            className="bg-[#24723B] text-white cursor-pointer hover:bg-[#24723b9f] rounded-[4px] w-[135px] h-[48px] px-[32px] py-[16px] text-[18px] font-medium"
+            onClick={() => setOpenRegister(true)}
+          >
             Đăng ký
           </Button>
         </div>
@@ -78,11 +82,15 @@ function HeaderComp() {
               {item.label}
             </NavLink>
           ))}
-          <Button className="mt-2 bg-[#24723B] hover:bg-[#24723b9f] rounded-[4px] text-white">
+          <Button
+            className="mt-2 bg-[#24723B] hover:bg-[#24723b9f] rounded-[4px] text-white"
+            onClick={() => setOpenRegister(true)}
+          >
             Đăng ký
           </Button>
         </div>
       )}
+      <RegisterComp open={openRegister} setOpen={setOpenRegister} />
     </header>
   );
 }
