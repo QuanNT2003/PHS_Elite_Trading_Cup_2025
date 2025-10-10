@@ -79,7 +79,7 @@ export function RegisterPage({ open, setOpen, complete }: props) {
       {/* <DialogTrigger asChild>
         <Button variant="outline">Edit Profile</Button>
       </DialogTrigger> */}
-      <DialogContent className="sm:max-w-[600px] bg-white flex flex-col gap-3">
+      <DialogContent className="sm:max-w-[540px] bg-white flex flex-col gap-6 p-6">
         <DialogHeader>
           <DialogTitle className="text-[#24723B] font-semibold text-[32px] text-center">
             ĐĂNG KÝ
@@ -142,11 +142,12 @@ export function RegisterPage({ open, setOpen, complete }: props) {
         <button
           disabled={buttonDisable}
           onClick={() => onClick()}
-          className={
-            buttonDisable
-              ? "ms-2 w-full bg-[#889189] rounded-sm py-4 px-12 text-center text-white gap-2.5 text-[20px] font-medium cursor-pointer "
-              : "ms-2 w-full bg-[#24723B] rounded-sm py-4 px-12 text-center text-white gap-2.5 text-[20px] font-medium cursor-pointer hover:bg-[#24723b79]"
-          }
+          className={`w-full rounded-sm py-4 px-12 text-center text-white gap-2.5 text-[20px] font-medium cursor-pointer 
+           ${
+             buttonDisable
+               ? " bg-[#889189]"
+               : " bg-[#24723B] hover:bg-[#24723b79]"
+           }`}
         >
           Kiểm tra
         </button>
