@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { ArrowUp, ArrowDown, Minus } from "lucide-react";
+import { ArrowUp, ArrowDown } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -14,7 +14,7 @@ interface RankingItem {
   nickname: string;
   account: string;
   university: string;
-  profit: string;
+  profit: number;
   change: number;
 }
 
@@ -30,20 +30,26 @@ const maskAccount = (account: string) => {
 
 export default function TableRanking({ data }: RankingTableProps) {
   return (
-    <div className="overflow-x-auto">
-      <Table className="text-sm border border-gray-200 rounded-md overflow-hidden">
+    <div className="overflow-x-auto w-full">
+      <Table className="text-sm border border-gray-200 rounded-md overflow-hidden table-fixed w-full min-w-[1200px]">
         <TableHeader>
           <TableRow className="bg-green-800 text-white font-semibold sm:text-xl">
-            <TableHead className="text-center w-[80px] py-6 px-4">
+            <TableHead className="text-center py-6 px-4 w-[10%]">
               Thứ hạng
             </TableHead>
-            <TableHead className="text-left py-6 px-4">Nickname</TableHead>
-            <TableHead className="text-left py-6 px-4 ">Số tài khoản</TableHead>
-            <TableHead className="text-center py-6 px-4">Trường</TableHead>
-            <TableHead className="text-center py-6 px-4">
+            <TableHead className="text-center py-6 px-4 w-[10%]">
+              Nickname
+            </TableHead>
+            <TableHead className="text-center py-6 px-4 w-[10%]">
+              Số tài khoản
+            </TableHead>
+            <TableHead className="text-center py-6 px-4 w-[40%]">
+              Trường
+            </TableHead>
+            <TableHead className="text-center py-6 px-4 w-[15%]">
               Tỉ suất lợi nhuận
             </TableHead>
-            <TableHead className="text-center py-6 px-4">
+            <TableHead className="text-center py-6 px-4 w-[15%]">
               Thứ hạng thay đổi
             </TableHead>
           </TableRow>
@@ -55,47 +61,62 @@ export default function TableRanking({ data }: RankingTableProps) {
               key={item.rank}
               className={cn(
                 item.rank % 2 === 0 ? "bg-green-50" : "bg-white",
-                "hover:bg-green-100 transition"
+                "hover:bg-green-100 transition h-[89px]"
               )}
             >
-              <TableCell className="text-center py-6 px-4">
+              <TableCell className="text-center py-6 px-4 w-[10%]">
                 <div className="w-6 h-6 flex items-center justify-center rounded-full bg-green-700 text-white font-semibold text-xs mx-auto">
                   {item.rank}
                 </div>
               </TableCell>
 
-              <TableCell className="font-medium text-gray-900 py-6 px-4 text-center">
+              <TableCell className="font-medium text-gray-900 py-6 px-4 w-[10%] text-center">
                 {item.nickname}
               </TableCell>
-              <TableCell className="text-gray-700 py-6 px-4">
+              <TableCell className="text-gray-700 py-6 px-4 w-[10%] text-center">
                 {maskAccount(item.account)}
               </TableCell>
-              <TableCell className="text-gray-700 py-6 px-4 text-center">
-                {item.university}
+              <TableCell className="text-gray-700 py-6 px-4 text-center align-middle">
+                <div className="flex justify-center">
+                  <div
+                    className="text-center break-words whitespace-normal overflow-hidden max-w-[90%]"
+                    style={{
+                      display: "-webkit-box",
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: "vertical",
+                    }}
+                  >
+                    {item.university}
+                  </div>
+                </div>
               </TableCell>
 
               <TableCell
                 className={cn(
-                  "text-center font-medium py-6 px-4",
-                  item.profit.includes("-") ? "text-red-600" : "text-green-700"
+                  "text-center font-medium py-6 px-4 w-[15%]",
+                  item.profit < 0
+                    ? "text-[#D83434]"
+                    : item.profit > 0
+                    ? "text-[#24723B]"
+                    : "text-[#464646]"
                 )}
               >
-                {item.profit}
+                {item.profit !== 0 ? item.profit + "%" : "-"}
               </TableCell>
 
-              <TableCell className="text-center py-6 px-4">
+              <TableCell className="text-center py-6 px-4 w-[15%]">
                 {item.change > 0 ? (
-                  <span className="flex items-center justify-center gap-1 text-green-700 font-medium">
+                  <span className="flex items-center justify-center gap-1 text-[#24723B] font-medium">
                     <ArrowUp size={14} />+{item.change}
                   </span>
                 ) : item.change < 0 ? (
-                  <span className="flex items-center justify-center gap-1 text-red-600 font-medium">
+                  <span className="flex items-center justify-center gap-1 text-[#D83434] font-medium">
                     <ArrowDown size={14} />
                     {item.change}
                   </span>
                 ) : (
-                  <span className="flex items-center justify-center text-gray-400 font-medium">
-                    <Minus size={14} />
+                  <span className="flex items-center justify-center text-[#464646] font-medium">
+                    -
                   </span>
                 )}
               </TableCell>

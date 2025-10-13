@@ -21,8 +21,8 @@ type Props = {
 
 export default function RuleCardComp({ items }: Props) {
   return (
-    <div className=" mx-auto px-4">
-      <div className="flex flex-wrap mt-5 justify-center gap-5 ">
+    <div className="mx-auto px-4">
+      <div className="flex flex-wrap justify-center gap-4 ">
         {items.map((item) => (
           <Card
             key={item.id}
@@ -47,9 +47,9 @@ export default function RuleCardComp({ items }: Props) {
                       </h3>
                     </div>
 
-                    <p className="text-lg text-[#464646] font-normal">
+                    <div className="md:text-lg text-[#464646] font-normal">
                       {item.description}
-                    </p>
+                    </div>
                   </div>
 
                   {/* optional CTA area if needed */}

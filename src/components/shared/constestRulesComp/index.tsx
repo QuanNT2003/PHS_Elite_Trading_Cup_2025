@@ -17,15 +17,15 @@ type Props = {
 function ContestRulesComp({ items }: Props) {
   return (
     <div
-      className="bg-cover bg-center p-10 bg-gray-50 relative"
+      className="bg-cover bg-center md:p-30 bg-gray-50 relative flex flex-col gap-10"
       style={{ backgroundImage: `url(${mark_bg})` }}
     >
-      <img src={dot_bg} className="absolute top-0 left-0" />
-      <img src={dot_bg} className="absolute bottom-0 right-0" />
-      <div className="mx-auto text-[#24723B] md:text-[32px] font-semibold lg:w-[25%] w-[50%] text-center">
+      <img src={dot_bg} className="absolute top-50 left-0" />
+      <img src={dot_bg} className="absolute bottom-30 right-0" />
+      <div className="mx-auto text-[#24723B] text-[32px] font-semibold text-center">
         THỂ LỆ CUỘC THI
       </div>
-      <div className="mx-auto w-[60%] text-center my-5 text-[#464646]">
+      <div className="mx-auto w-[60%] text-center text-[#464646]">
         Việc nắm vững thể lệ cuộc thi sẽ giúp thí sinh tự tin hơn trong quá
         trình thi đấu cũng như tránh mắc phải các sai lầm đáng tiếc, dẫn đến
         việc bị loại sớm khỏi cuộc thi.{" "}

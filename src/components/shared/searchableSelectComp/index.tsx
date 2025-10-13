@@ -71,7 +71,7 @@ export function SearchableSelectComp({
             setOpen(true);
           }}
           placeholder={placeholder}
-          className="pl-10 text-lg pr-8 text-start hover:border-[#8a8a8a] hover:border-[1px] border-[#889189] focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-0"
+          className="!p-[16px] !pl-10 !text-lg !pr-10 text-start text-[#464646] font-normal hover:border-[#8a8a8a] hover:border-[1px] border-[#889189] focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-0"
         />
         {searchTerm === "" ? (
           <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-500" />
@@ -96,13 +96,15 @@ export function SearchableSelectComp({
         <PopoverContent
           align="start"
           className="w-[var(--radix-popover-trigger-width)] bg-white p-0 shadow-md border border-gray-200 rounded-md"
+          onMouseDown={(e) => e.stopPropagation()} // 👈 Dòng này cực quan trọng
         >
           <Command>
-            <CommandList>
+            <CommandList className="max-h-[132px]">
               <CommandEmpty>Không tìm thấy kết quả.</CommandEmpty>
               <CommandGroup>
                 {filteredOptions.map((school) => (
                   <CommandItem
+                    className="py-1 hover:bg-[#F5FFF8]"
                     key={school.value}
                     value={school.value}
                     onSelect={() => {
@@ -111,7 +113,9 @@ export function SearchableSelectComp({
                       setOpen(false);
                     }}
                   >
-                    {school.label}
+                    <div className="text-lg py-1 px-3 text-[#464646] font-normal ">
+                      {school.label}
+                    </div>
                   </CommandItem>
                 ))}
               </CommandGroup>

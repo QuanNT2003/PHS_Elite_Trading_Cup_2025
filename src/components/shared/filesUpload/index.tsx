@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Upload, X, Image as ImageIcon } from "lucide-react";
+import {} from "react";
+import { Upload, X } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 type FilesUploadProps = {
   title?: string;
@@ -14,20 +14,18 @@ function FilesUpload({
   onChange,
   description,
 }: FilesUploadProps) {
-  const [images, setImages] = useState<File[]>(value);
-
   // 📂 Xử lý khi người dùng chọn file
   const handleAddImages = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
-    const newImages = [...images, ...files];
-    setImages(newImages);
+    console.log(files);
+
+    const newImages = [...value, ...files];
     onChange?.(newImages);
   };
 
   // ❌ Xóa ảnh
   const handleRemoveImage = (index: number) => {
-    const updated = images.filter((_, i) => i !== index);
-    setImages(updated);
+    const updated = value.filter((_, i) => i !== index);
     onChange?.(updated);
   };
 
@@ -70,19 +68,23 @@ function FilesUpload({
         </div>
       )}
       {/* Hiển thị danh sách ảnh */}
-      {images.length > 0 && (
+      {value.length > 0 && (
         <div className="flex flex-col gap-2">
           <Separator className="bg-[#889189] w-full" />
           <div className="text-lg font-normal text-[#464646]">
             File đã tải lên{" "}
           </div>
-          {images.map((file, index) => (
+          {value.map((file, index) => (
             <div
               key={index}
               className="flex items-center justify-between rounded-md px-2 py-2 bg-white hover:bg-gray-50 transition"
             >
               <div className="flex items-center gap-3 min-w-0 flex-1">
-                <ImageIcon className="h-6 w-6 text-gray-500 flex-shrink-0" />
+                <img
+                  src={URL.createObjectURL(file)}
+                  alt={file.name}
+                  className="h-10 w-10 object-cover rounded-md flex-shrink-0 border"
+                />
                 <div className="min-w-0 flex-1">
                   <div className="text-lg font-normal text-[#889189] truncate">
                     {file.name}
@@ -98,7 +100,7 @@ function FilesUpload({
                 onClick={() => handleRemoveImage(index)}
                 className="text-[#464646] hover:text-red-500 flex-shrink-0 ml-2"
               >
-                <X className="h-6 w-6" />
+                <X className="h-6 w-6 cursor-pointer" />
               </button>
             </div>
           ))}

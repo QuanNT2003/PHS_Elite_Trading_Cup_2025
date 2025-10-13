@@ -58,7 +58,7 @@ function FooterComp() {
           backgroundImage: `linear-gradient(rgba(12, 89, 38, 0.92), rgba(12, 89, 38, 0.92)), url(${footer_bg})`,
         }}
       >
-        <div className="bg-[#0C5926] rounded-[8px] p-6 lg:w-[270px] w-full text-white flex flex-col justify-between shadow-lg mb-6 lg:mb-0 lg:absolute lg:top-4 md:left-[5%]">
+        <div className="bg-[#0C5926] rounded-[8px] p-6 lg:w-[270px] w-full text-white flex flex-col justify-between shadow-lg mb-6 lg:mb-0 lg:absolute lg:top-4 md:left-[5%] flex flex-col gap-3">
           <img
             src={phs_logo}
             alt="Phu Hung Securities"
@@ -86,11 +86,11 @@ function FooterComp() {
           </div>
         </div>
         <div className="hidden md:block w-[270px]"></div>
-        <div className="my-4">
-          <div className=" font-semibold text-[20px] mb-5">
+        <div className="my-4 flex flex-col gap-8">
+          <div className=" font-semibold text-[20px]">
             Liên hệ với chúng tôi
           </div>
-          <div className="text-[#D1D5DB]">
+          <div className="text-[#D1D5DB] flex flex-col gap-3">
             {connectItem.map((item, index) => (
               <div className="flex my-[6px] cursor-pointer" key={index}>
                 <img src={item.img} className="h-[20px] w-[20px] me-2" />
@@ -102,9 +102,9 @@ function FooterComp() {
             ))}
           </div>
         </div>
-        <div className="my-4">
-          <div className=" font-semibold text-[20px] mb-5">Liên hệ hotline</div>
-          <div className="text-[#D1D5DB]">
+        <div className="my-4 flex flex-col gap-8">
+          <div className=" font-semibold text-[20px]">Liên hệ hotline</div>
+          <div className="text-[#D1D5DB] flex flex-col gap-3">
             {callItem.map((item, index) => (
               <div className="flex my-[6px] cursor-pointer" key={index}>
                 <img src={item.img} className="h-[20px] w-[20px] me-2" />
@@ -116,26 +116,21 @@ function FooterComp() {
             ))}
           </div>
         </div>
-        <div className="my-4">
-          <div className=" font-semibold text-[20px] mb-5">
+        <div className="my-4 flex flex-col gap-8">
+          <div className=" font-semibold text-[20px]">
             Tải app PHS-Mobile Trading
           </div>
-          <div className="flex mb-5">
+          <div className="flex">
             <img
               src={qr_img}
               className="h-[116px] w-[116px] me-3 cursor-pointer"
             />
             <div>
-              <img
-                src={as_img}
-                className="h-[48px] w-[165px] mb-5 cursor-pointer"
-              />
+              <img src={as_img} className="h-[48px] w-[165px] cursor-pointer" />
               <img src={gp_img} className="h-[48px] w-[165px] cursor-pointer" />
             </div>
           </div>
-          <div className=" font-semibold text-[20px] mb-5">
-            Đăng ký nhận tin
-          </div>
+          <div className=" font-semibold text-[20px]">Đăng ký nhận tin</div>
           <div className="flex">
             <Input className="bg-white text-[#6B7280] rounded-r-none p-1.5 " />
             <div className="h-48px w-[68px] flex justify-center items-center cursor-pointer bg-[#BE942D] rounded-r-md">

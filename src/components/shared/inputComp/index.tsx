@@ -40,15 +40,17 @@ function InputComp({
   show,
 }: InputTextProps) {
   return (
-    <div className="w-full flex flex-col gap-1 ">
+    <div className="w-full flex flex-col gap-3 ">
       <div className="font-medium mb-[3px] text-[20px]">
         {title}
         {required && <span className="text-red-500"> *</span>}
       </div>
       <div className="relative w-full">
         <Input
-          className={`w-full rounded-[4px] p-[16px] pe-10 gap-[4px] text-[18px] hover:border-[#8a8a8a] hover:border-[1px] focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none border ${
-            error ? "border-[#D83434]" : "border-[#889189]"
+          className={` w-full rounded-[4px] !font-normal !p-[16px] !text-[18px] !pe-10 gap-[4px] focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none border ${
+            error
+              ? "border-[#D83434] text-[#D83434] hover:border-[#D83434] hover:border-[1px]"
+              : "border-[#889189] text-[#464646] hover:border-[#8a8a8a] hover:border-[1px]"
           }`}
           placeholder={placeholder}
           value={value}

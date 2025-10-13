@@ -22,7 +22,7 @@ export const routes: AppRoute[] = [
     layout: defaultLayout,
   },
   {
-    path: "/contact",
+    path: "/connect",
     component: ConnectPage,
     layout: defaultLayout,
   },
