@@ -9,14 +9,18 @@ import {
 import { useEffect, useState } from "react";
 import InputComp from "../../components/shared/inputComp";
 import { X } from "lucide-react";
+import { LoadingComp } from "@/components/shared/loadingComp";
+import * as PlayerService from "@/apiServices/Player";
 type props = {
   open?: boolean;
   setOpen?: (value: boolean) => void;
-  complete?: () => void;
+  complete?: (account: string, email: string, phone: string) => void;
 };
 export function RegisterPage({ open, setOpen, complete }: props) {
+  const [loading, setLoading] = useState(false);
+
   const [account, setAccount] = useState("");
-  const [errorAccount, setErrorAccount] = useState("Đã có lỗi");
+  const [errorAccount, setErrorAccount] = useState("");
   const onChangeAccount = (value: string) => {
     setAccount(value);
     setErrorAccount("");
@@ -44,6 +48,7 @@ export function RegisterPage({ open, setOpen, complete }: props) {
   };
 
   const [stepTwo, setStepTwo] = useState(false);
+  const [resultOtp, setResultOtp] = useState("");
   const [buttonDisable, setButtonDisable] = useState(true);
   const [time, setTime] = useState(90); // bắt đầu từ 60s
 
@@ -91,22 +96,75 @@ export function RegisterPage({ open, setOpen, complete }: props) {
   ]);
 
   useEffect(() => {
-    // setAccount("");
-    // setEmail("");
-    // setPhone("");
-    // setOtp("");
-    // setErrorAccount("");
-    // setErrorEmail("");
-    // setErrorPhone("");
-    // setErrorOtp("");
+    setAccount("");
+    setEmail("");
+    setPhone("");
+    setOtp("");
+    setErrorAccount("");
+    setErrorEmail("");
+    setErrorPhone("");
+    setErrorOtp("");
   }, [open]);
 
-  const onClick = () => {
-    if (stepTwo === false) {
+  const sendOtp = async () => {
+    setLoading(true);
+    const obj = {
+      email: email,
+      accountNumber: account,
+      phone: phone,
+    };
+
+    const result = await PlayerService.registerOtp(obj).catch((error) => {
+      console.log(error.response.data.message);
+      const messages = error.response?.data?.message;
+
+      if (Array.isArray(messages)) {
+        messages.forEach((msg: string) => {
+          if (msg.toLowerCase().includes("accountnumber")) {
+            setErrorAccount(msg);
+          }
+          if (msg.toLowerCase().includes("email")) {
+            setErrorEmail(msg);
+          }
+          if (msg.toLowerCase().includes("số điện thoại")) {
+            setErrorPhone(msg);
+          }
+        });
+      } else if (typeof messages === "string") {
+        // trong trường hợp message không phải mảng
+        if (messages.toLowerCase().includes("accountnumber")) {
+          setErrorAccount(messages);
+        }
+        if (messages.toLowerCase().includes("email")) {
+          setErrorEmail(messages);
+        }
+        if (messages.toLowerCase().includes("số điện thoại")) {
+          setErrorPhone(messages);
+        }
+      }
+      setLoading(false);
+    });
+    if (result) {
+      setLoading(false);
       setStepTwo(true);
       setTime(90);
+      setResultOtp(result.toString());
+      // console.log(result);
+    }
+  };
+  const onClick = async () => {
+    if (stepTwo === false) {
+      await sendOtp();
     } else {
-      complete?.();
+      if (time === 0) {
+        setErrorOtp("Quá thời gian nhập otp, vui lòng lấy lại otp");
+      } else {
+        if (otp === resultOtp) {
+          complete?.(account, email, phone);
+        } else {
+          setErrorOtp("Nhập sai otp, vui lòng lấy lại otp");
+        }
+      }
     }
   };
   return (
@@ -169,7 +227,10 @@ export function RegisterPage({ open, setOpen, complete }: props) {
                   {time !== 0 ? (
                     time + "s"
                   ) : (
-                    <span className=" underline text-[#24723B] cursor-pointer">
+                    <span
+                      className=" underline text-[#24723B] cursor-pointer"
+                      onClick={() => sendOtp()}
+                    >
                       Gửi lại mã
                     </span>
                   )}
@@ -196,6 +257,7 @@ export function RegisterPage({ open, setOpen, complete }: props) {
           </button>
         </AlertDialogFooter>
       </AlertDialogContent>
+      <LoadingComp open={loading} />
     </AlertDialog>
   );
 }

@@ -20,7 +20,8 @@ function RegisterSuccessComp({ open, setOpen }: props) {
             <span className="text-[#FF8133]">2025</span> THÀNH CÔNG
           </AlertDialogTitle>
         </AlertDialogHeader>
-        <AlertDialogDescription className="flex flex-col gap-6">
+        <AlertDialogDescription className="hidden"></AlertDialogDescription>
+        <div className="flex flex-col gap-6">
           <div className="text-center text-[18px] font-normal">
             Vui lòng giữ số dư tài khoản tối thiểu{" "}
             <span className="font-semibold">5.000.000 VNĐ</span> đến hết ngày
@@ -30,7 +31,7 @@ function RegisterSuccessComp({ open, setOpen }: props) {
           <div>
             <img src={logo} alt="logo" className="w-[80%] mx-auto" />
           </div>
-        </AlertDialogDescription>
+        </div>
 
         <div className="flex flex-col gap-[12px]">
           <a

@@ -23,7 +23,22 @@ function HeaderComp() {
     { to: "/connect", label: "Liên hệ" },
   ];
 
-  const completeRegiter = () => {
+  const [obj, setObj] = useState({
+    accountNumber: "",
+    email: "",
+    phone: "",
+  });
+  const completeRegiter = (account: string, email: string, phone: string) => {
+    // console.log(account);
+    // console.log(email);
+    // console.log(phone);
+
+    setObj({
+      accountNumber: account,
+      email: email,
+      phone: phone,
+    });
+
     setOpenInforamtion(true);
   };
   return (
@@ -108,6 +123,7 @@ function HeaderComp() {
       <CompetitionInformationPage
         open={openInformation}
         setOpen={setOpenInforamtion}
+        obj={obj}
       />
       <BeforeTheEventNotifi open={openBefore} setOpen={setOpenBefore} />
       <AfterTheEventNotifi open={openAfter} setOpen={setOpenAfter} />
