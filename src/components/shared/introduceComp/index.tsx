@@ -30,7 +30,7 @@ function IntroduceComp() {
           <source src="/videos/demo.mp4" type="video/mp4" />
           Trình duyệt của bạn không hỗ trợ video.
         </video>
-        <div className="lg:w-[38%] w-full min-h-[400px] relative text-[18px] text-[#464646]  ">
+        <div className="lg:w-[38%] mx-3 w-full min-h-[400px] relative text-[18px] text-[#464646]  ">
           <img
             src={phs_cup_logo}
             className="absolute top-[-30px] left-0 w-[220px]"

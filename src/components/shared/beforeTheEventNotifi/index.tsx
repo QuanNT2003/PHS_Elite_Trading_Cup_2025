@@ -21,7 +21,8 @@ function BeforeTheEventNotifi({ open, setOpen }: props) {
             {" "}
             CUỘC THI SẼ MỞ CỔNG ĐĂNG KÍ TỪ NGÀY 08/09 - 24/09/2025
           </AlertDialogTitle>
-          <AlertDialogDescription className="flex flex-col gap-6">
+          <AlertDialogDescription className="hidden"></AlertDialogDescription>
+          <div className="flex flex-col gap-6">
             <div className="text-center text-[18px] font-normal text-[#464646] align-middle">
               Nhanh tay đăng ký để nhận ngay voucher trị giá 100.000 VNĐ dành
               cho 100 thí sinh đăng ký tham gia sớm nhất và hợp lệ
@@ -29,7 +30,7 @@ function BeforeTheEventNotifi({ open, setOpen }: props) {
             <div>
               <img src={opening_soon} alt="logo" className="w-[60%] mx-auto" />
             </div>
-          </AlertDialogDescription>
+          </div>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <button

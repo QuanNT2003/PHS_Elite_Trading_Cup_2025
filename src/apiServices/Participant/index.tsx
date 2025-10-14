@@ -1,12 +1,12 @@
 import * as request from "@/utils/request";
 
-interface PlayerPayload extends Record<string, unknown> {
+interface ParticipantPayload extends Record<string, unknown> {
   email?: string;
   accountNumber?: string;
   phone?: string;
 }
 
-interface PlayerRegisterPayload extends Record<string, unknown> {
+interface ParticipantRegisterPayload extends Record<string, unknown> {
   email?: string;
   accountNumber?: string;
   phone?: string;
@@ -16,9 +16,9 @@ interface PlayerRegisterPayload extends Record<string, unknown> {
   avatar?: File;
 }
 
-export const registerOtp = async (obj: PlayerPayload) => {
+export const registerOtp = async (obj: ParticipantPayload) => {
   try {
-    const res = await request.postMethod("players/send-otp", obj);
+    const res = await request.postMethod("participants/send-otp", obj);
 
     return res;
   } catch (error) {
@@ -26,7 +26,7 @@ export const registerOtp = async (obj: PlayerPayload) => {
   }
 };
 
-export const registerPlayer = async (obj: PlayerRegisterPayload) => {
+export const registerParticipant = async (obj: ParticipantRegisterPayload) => {
   try {
     const formData = new FormData();
     // append các field thông thường
@@ -41,7 +41,7 @@ export const registerPlayer = async (obj: PlayerRegisterPayload) => {
     if (obj.avatar) {
       formData.append("avatar", obj.avatar);
     }
-    const res = await request.postMethod("players", formData);
+    const res = await request.postMethod("participants", formData);
 
     return res;
   } catch (error) {

@@ -96,10 +96,11 @@ export function SearchableSelectComp({
         <PopoverContent
           align="start"
           className="w-[var(--radix-popover-trigger-width)] bg-white p-0 shadow-md border border-gray-200 rounded-md"
-          onMouseDown={(e) => e.stopPropagation()} // 👈 Dòng này cực quan trọng
+          onMouseDown={(e) => e.stopPropagation()}
+          onWheel={(e) => e.stopPropagation()} // 👈 Dòng này cực quan trọng
         >
           <Command>
-            <CommandList className="max-h-[132px]">
+            <CommandList className="max-h-[132px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-400 transition-all duration-200">
               <CommandEmpty>Không tìm thấy kết quả.</CommandEmpty>
               <CommandGroup>
                 {filteredOptions.map((school) => (

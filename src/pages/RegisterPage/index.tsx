@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import InputComp from "../../components/shared/inputComp";
 import { X } from "lucide-react";
 import { LoadingComp } from "@/components/shared/loadingComp";
-import * as PlayerService from "@/apiServices/Player";
+import * as ParticipantService from "@/apiServices/Participant";
 type props = {
   open?: boolean;
   setOpen?: (value: boolean) => void;
@@ -114,13 +114,16 @@ export function RegisterPage({ open, setOpen, complete }: props) {
       phone: phone,
     };
 
-    const result = await PlayerService.registerOtp(obj).catch((error) => {
-      console.log(error.response.data.message);
+    const result = await ParticipantService.registerOtp(obj).catch((error) => {
+      // console.log(error.response.data.message);
       const messages = error.response?.data?.message;
 
       if (Array.isArray(messages)) {
         messages.forEach((msg: string) => {
-          if (msg.toLowerCase().includes("accountnumber")) {
+          if (
+            msg.toLowerCase().includes("accountnumber") ||
+            msg.toLowerCase().includes("số tài khoản")
+          ) {
             setErrorAccount(msg);
           }
           if (msg.toLowerCase().includes("email")) {
@@ -132,7 +135,10 @@ export function RegisterPage({ open, setOpen, complete }: props) {
         });
       } else if (typeof messages === "string") {
         // trong trường hợp message không phải mảng
-        if (messages.toLowerCase().includes("accountnumber")) {
+        if (
+          messages.toLowerCase().includes("accountnumber") ||
+          messages.toLowerCase().includes("số tài khoản")
+        ) {
           setErrorAccount(messages);
         }
         if (messages.toLowerCase().includes("email")) {

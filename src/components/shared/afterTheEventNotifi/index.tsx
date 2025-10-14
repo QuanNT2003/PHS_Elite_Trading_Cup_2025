@@ -22,14 +22,15 @@ function AfterTheEventNotifi({ open, setOpen }: props) {
             <span className="text-[#FF8133]">2025</span>
           </AlertDialogTitle>
         </AlertDialogHeader>
-        <AlertDialogDescription className="flex flex-col gap-6">
+        <AlertDialogDescription className="hidden"></AlertDialogDescription>
+        <div className="flex flex-col gap-6">
           <div className="text-center text-[18px] font-normal">
             Hẹn gặp các bạn vào mùa sau
           </div>
           <div>
             <img src={logo} alt="logo" className="w-[80%] mx-auto" />
           </div>
-        </AlertDialogDescription>
+        </div>
 
         <AlertDialogFooter>
           <button

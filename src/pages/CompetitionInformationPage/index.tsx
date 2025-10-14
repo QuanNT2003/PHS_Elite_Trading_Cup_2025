@@ -12,7 +12,7 @@ import { SearchableSelectComp } from "@/components/shared/searchableSelectComp";
 import FilesUpload from "@/components/shared/filesUpload";
 import RegisterSuccessComp from "@/components/shared/registerSuccessComp";
 import { X } from "lucide-react";
-import * as PlayerService from "@/apiServices/Player";
+import * as ParticipantService from "@/apiServices/Participant";
 import { LoadingComp } from "@/components/shared/loadingComp";
 type props = {
   open?: boolean;
@@ -28,6 +28,7 @@ const options = [
   { value: "UEL", label: "Đại học Kinh tế - Luật (UEL)" },
   { value: "UEH", label: "Đại học Kinh tế TP. Hồ Chí Minh (UEH)" },
   { value: "UFM", label: "Đại học Tài chính - Marketing (UFM)" },
+  { value: "HUB", label: "Đại học Ngân hàng TP.HCM (HUB)" },
   { value: "Other", label: "Khác" },
 ];
 function CompetitionInformationPage({ open, setOpen, obj }: props) {
@@ -90,32 +91,32 @@ function CompetitionInformationPage({ open, setOpen, obj }: props) {
       avatar: images,
     };
 
-    const result = await PlayerService.registerPlayer(playerObj).catch(
-      (error) => {
-        console.log(error);
-        const messages = error.response?.data?.message;
+    const result = await ParticipantService.registerParticipant(
+      playerObj
+    ).catch((error) => {
+      console.log(error);
+      const messages = error.response?.data?.message;
 
-        if (Array.isArray(messages)) {
-          messages.forEach((msg: string) => {
-            if (msg.toLowerCase().includes("nickname")) {
-              setErrorNickname(msg);
-            }
-            // if (msg.toLowerCase().includes("số điện thoại")) {
-            //   setErrorPhone(msg);
-            // }
-          });
-        } else if (typeof messages === "string") {
-          // trong trường hợp message không phải mảng
-          if (messages.toLowerCase().includes("nickname")) {
-            setErrorNickname(messages);
+      if (Array.isArray(messages)) {
+        messages.forEach((msg: string) => {
+          if (msg.toLowerCase().includes("nickname")) {
+            setErrorNickname(msg);
           }
-          // if (messages.toLowerCase().includes("số điện thoại")) {
-          //   setErrorPhone(messages);
+          // if (msg.toLowerCase().includes("số điện thoại")) {
+          //   setErrorPhone(msg);
           // }
+        });
+      } else if (typeof messages === "string") {
+        // trong trường hợp message không phải mảng
+        if (messages.toLowerCase().includes("nickname")) {
+          setErrorNickname(messages);
         }
-        setLoading(false);
+        // if (messages.toLowerCase().includes("số điện thoại")) {
+        //   setErrorPhone(messages);
+        // }
       }
-    );
+      setLoading(false);
+    });
     if (result) {
       setLoading(false);
       setSuccess(true);
