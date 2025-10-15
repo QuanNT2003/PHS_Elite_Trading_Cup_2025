@@ -17,7 +17,7 @@ type Props = {
 function ContestRulesComp({ items }: Props) {
   return (
     <div
-      className="bg-cover bg-center md:p-30 bg-gray-50 relative flex flex-col gap-10"
+      className="bg-cover bg-center md:p-30 p-10 bg-gray-50 relative flex flex-col gap-10"
       style={{ backgroundImage: `url(${mark_bg})` }}
     >
       <img src={dot_bg} className="absolute top-50 left-0" />

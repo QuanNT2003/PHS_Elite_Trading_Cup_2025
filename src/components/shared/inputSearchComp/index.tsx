@@ -21,15 +21,12 @@ function InputSearchComp({
       <div className="font-medium mb-[3px] text-[20px]">{title}</div>
       <div className="relative w-full max-w-sm">
         {/* Icon Search */}
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2  w-5 h-5 cursor-pointer" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2  w-5 h-5 cursor-pointer stroke-[3px]" />
 
         {/* Input */}
         <Input
-          className={
-            error
-              ? "border-[#D83434] py-3 px-10 rounded-sm gap-[4px] text-[18px]"
-              : "border-[#889189] py-3 px-10 rounded-sm gap-[4px] text-[18px]"
-          }
+          className={`py-3 px-10 rounded-sm gap-[4px] text-[18px]
+            ${error ? "border-[#D83434] " : "border-[#889189]"}`}
           placeholder={placeholder}
           value={value}
           onChange={(e) => {

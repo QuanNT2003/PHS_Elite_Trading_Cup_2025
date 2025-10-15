@@ -100,7 +100,7 @@ function CompetitionInformationPage({ open, setOpen, obj }: props) {
       if (Array.isArray(messages)) {
         messages.forEach((msg: string) => {
           if (msg.toLowerCase().includes("nickname")) {
-            setErrorNickname(msg);
+            setErrorNickname(msg + ", vui lòng thử lại");
           }
           // if (msg.toLowerCase().includes("số điện thoại")) {
           //   setErrorPhone(msg);
@@ -109,7 +109,7 @@ function CompetitionInformationPage({ open, setOpen, obj }: props) {
       } else if (typeof messages === "string") {
         // trong trường hợp message không phải mảng
         if (messages.toLowerCase().includes("nickname")) {
-          setErrorNickname(messages);
+          setErrorNickname(messages + ", vui lòng thử lại");
         }
         // if (messages.toLowerCase().includes("số điện thoại")) {
         //   setErrorPhone(messages);

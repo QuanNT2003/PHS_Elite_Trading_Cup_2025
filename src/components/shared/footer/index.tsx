@@ -58,7 +58,7 @@ function FooterComp() {
           backgroundImage: `linear-gradient(rgba(12, 89, 38, 0.92), rgba(12, 89, 38, 0.92)), url(${footer_bg})`,
         }}
       >
-        <div className="bg-[#0C5926] rounded-[8px] p-6 lg:w-[270px] w-full text-white flex flex-col justify-between shadow-lg mb-6 lg:mb-0 lg:absolute lg:top-4 md:left-[5%] flex flex-col gap-3">
+        <div className="bg-[#0C5926] rounded-[8px] p-6 lg:w-[270px] w-full text-white flex flex-col justify-between shadow-lg mb-6 lg:mb-0 lg:absolute lg:top-4 md:left-[5%] gap-3">
           <img
             src={phs_logo}
             alt="Phu Hung Securities"
@@ -66,9 +66,8 @@ function FooterComp() {
           />
           <div className="font-semibold">Trụ sở:</div>
           <div className="text-[14px] leading-relaxed mb-4">
-            <p>Tầng 21, Phú Mỹ Hưng Tower,</p>
-            <p>08 Hoàng Văn Thái, Phường Tân Phú,</p>
-            <p>TP. Hồ Chí Minh</p>
+            Trụ sở: Tầng 21, Phú Mỹ Hưng Tower, 08 Hoàng Văn Thái, Phường Tân
+            Mỹ, Thành phố Hồ Chí Minh
           </div>
           <div className="space-y-2 text-[14px]">
             <div className="flex items-center gap-2">

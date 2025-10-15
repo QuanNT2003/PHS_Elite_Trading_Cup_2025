@@ -124,13 +124,13 @@ export function RegisterPage({ open, setOpen, complete }: props) {
             msg.toLowerCase().includes("accountnumber") ||
             msg.toLowerCase().includes("số tài khoản")
           ) {
-            setErrorAccount(msg);
+            setErrorAccount(msg + ", vui lòng thử lại");
           }
           if (msg.toLowerCase().includes("email")) {
-            setErrorEmail(msg);
+            setErrorEmail(msg + ", vui lòng thử lại");
           }
           if (msg.toLowerCase().includes("số điện thoại")) {
-            setErrorPhone(msg);
+            setErrorPhone(msg + ", vui lòng thử lại");
           }
         });
       } else if (typeof messages === "string") {
@@ -139,13 +139,13 @@ export function RegisterPage({ open, setOpen, complete }: props) {
           messages.toLowerCase().includes("accountnumber") ||
           messages.toLowerCase().includes("số tài khoản")
         ) {
-          setErrorAccount(messages);
+          setErrorAccount(messages + ", vui lòng thử lại");
         }
         if (messages.toLowerCase().includes("email")) {
-          setErrorEmail(messages);
+          setErrorEmail(messages + ", vui lòng thử lại");
         }
         if (messages.toLowerCase().includes("số điện thoại")) {
-          setErrorPhone(messages);
+          setErrorPhone(messages + ", vui lòng thử lại");
         }
       }
       setLoading(false);

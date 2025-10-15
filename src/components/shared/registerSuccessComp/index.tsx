@@ -23,9 +23,10 @@ function RegisterSuccessComp({ open, setOpen }: props) {
         <AlertDialogDescription className="hidden"></AlertDialogDescription>
         <div className="flex flex-col gap-6">
           <div className="text-center text-[18px] font-normal">
-            Vui lòng giữ số dư tài khoản tối thiểu{" "}
-            <span className="font-semibold">5.000.000 VNĐ</span> đến hết ngày
-            <span className="font-semibold"> 24/09/2025 </span> để tham gia cuộc
+            Thí sinh vui lòng hoàn tất việc{" "}
+            <span className="font-semibold">nạp tiền</span> vào tài khoản trước
+            ngày
+            <span className="font-semibold"> 03/12/2025 </span> để tham gia cuộc
             thi
           </div>
           <div>

@@ -3,22 +3,19 @@ import { ArrowUp, ArrowDown, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 
-type SearchResultProps = {
+interface account {
   rank: number;
   nickname: string;
   account: string;
   university: string;
   profit: number;
   change: number;
-};
-
+}
+interface SearchResultProps {
+  searchResult: account;
+}
 export default function RankSearchResultComp({
-  rank,
-  nickname,
-  account,
-  university,
-  profit,
-  change,
+  searchResult,
 }: SearchResultProps) {
   const [scroll, setScroll] = useState(false);
 
@@ -48,15 +45,17 @@ export default function RankSearchResultComp({
       >
         <div className="text-center py-6 px-4 w-[10%]">
           <div className="w-6 h-6 flex items-center justify-center rounded-full bg-green-700 text-white font-semibold text-xs mx-auto">
-            {rank}
+            {searchResult.rank}
           </div>
         </div>
 
         <div className="font-medium text-gray-900 py-6 px-4 text-center w-[10%]">
-          {nickname}
+          {searchResult.nickname}
         </div>
 
-        <div className="text-gray-700 py-6 px-4 w-[10%]">{account}</div>
+        <div className="text-gray-700 py-6 px-4 w-[10%]">
+          {searchResult.account}
+        </div>
 
         <div className="text-gray-700 py-6 px-4 text-center align-middle w-[40%]">
           <div className="flex justify-center">
@@ -68,7 +67,7 @@ export default function RankSearchResultComp({
                 WebkitBoxOrient: "vertical",
               }}
             >
-              {university}
+              {searchResult.university}
             </div>
           </div>
         </div>
@@ -76,25 +75,25 @@ export default function RankSearchResultComp({
         <div
           className={cn(
             "text-center font-medium py-6 px-4 w-[15%]",
-            profit < 0
+            searchResult.profit < 0
               ? "text-[#D83434]"
-              : profit > 0
+              : searchResult.profit > 0
               ? "text-[#24723B]"
               : "text-[#464646]"
           )}
         >
-          {profit !== 0 ? profit + "%" : "-"}
+          {searchResult.profit !== 0 ? searchResult.profit + "%" : "-"}
         </div>
 
         <div className="text-center py-6 px-4 w-[15%]">
-          {change > 0 ? (
+          {searchResult.change > 0 ? (
             <span className="flex items-center justify-center gap-1 text-green-700 font-medium">
-              <ArrowUp size={14} />+{change}
+              <ArrowUp size={14} />+{searchResult.change}
             </span>
-          ) : change < 0 ? (
+          ) : searchResult.change < 0 ? (
             <span className="flex items-center justify-center gap-1 text-red-600 font-medium">
               <ArrowDown size={14} />
-              {change}
+              {searchResult.change}
             </span>
           ) : (
             <span className="flex items-center justify-center text-gray-400 font-medium">
