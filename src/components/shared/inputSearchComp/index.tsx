@@ -25,7 +25,7 @@ function InputSearchComp({
 
         {/* Input */}
         <Input
-          className={`py-3 px-10 rounded-sm gap-[4px] text-[18px]
+          className={`py-3 px-10 rounded-sm gap-[4px] !text-[18px]
             ${error ? "border-[#D83434] " : "border-[#889189]"}`}
           placeholder={placeholder}
           value={value}
