@@ -26,7 +26,7 @@ export default function RuleCardComp({ items }: Props) {
         {items.map((item) => (
           <Card
             key={item.id}
-            className="overflow-hidden shadow-none border border-transparent bg-[#ECF6EA] sm:w-[40%] w-[70%] lg:w-[287px] min-w-[287px] p-0"
+            className="overflow-hidden shadow-none border border-transparent bg-[#ECF6EA] sm:w-[40%] w-[70%] lg:w-[288px] min-w-[300px] p-0"
           >
             <CardContent className="p-0">
               <div className="flex flex-col">
