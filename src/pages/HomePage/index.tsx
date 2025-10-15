@@ -112,7 +112,7 @@ const items = [
         </span>{" "}
       </div>
     ),
-    image: <img src={rule_2} className="w-[60%]" />,
+    image: <img src={rule_2} className="h-[120px]" />,
   },
   {
     id: "two",
@@ -129,7 +129,7 @@ const items = [
       </div>
     ),
 
-    image: <img src={rule_3} className="w-[60%]" />,
+    image: <img src={rule_3} className="h-[120px]" />,
   },
   {
     id: "three",
@@ -144,7 +144,7 @@ const items = [
       </div>
     ),
 
-    image: <img src={rule_1} className="w-[60%]" />,
+    image: <img src={rule_1} className="h-[120px]" />,
   },
   {
     id: "four",
@@ -160,7 +160,7 @@ const items = [
       </div>
     ),
 
-    image: <img src={rule_4} className="w-[60%]" />,
+    image: <img src={rule_4} className="h-[120px]" />,
   },
 ];
 
