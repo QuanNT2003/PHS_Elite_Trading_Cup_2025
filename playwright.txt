@@ -11,3 +11,7 @@ tsconfig.json
 
 
 npx playwright codegen -> Ghi test
+
+npx playwright test --ui -> Mở test trên giao diện playwright
+
+npx playwright test --headed ->  Mở test trên trình duyệt
