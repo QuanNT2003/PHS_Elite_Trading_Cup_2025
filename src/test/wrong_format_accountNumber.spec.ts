@@ -16,4 +16,8 @@ test("Test_WrongFormat_AccountNumber", async ({ page }) => {
   await page.waitForTimeout(1000);
   await page.getByRole("button", { name: "Kiểm tra" }).click();
   await page.waitForTimeout(1000);
+  const errorMessage = page.getByText(
+    "Số tài khoản phải bắt đầu bằng 022C, vui lòng thử lại"
+  );
+  await expect(errorMessage).toBeVisible();
 });

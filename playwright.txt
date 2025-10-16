@@ -10,7 +10,7 @@ tsconfig.json
   }
 
 
-npx playwright codegen -> Ghi test
+npx playwright codegen http://localhost:3001/-> Ghi test
 
 npx playwright test --ui -> Mở test trên giao diện playwright
 

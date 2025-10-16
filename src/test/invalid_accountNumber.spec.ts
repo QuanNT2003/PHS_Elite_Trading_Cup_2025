@@ -16,4 +16,14 @@ test("Test_Invalid_AccountNumber", async ({ page }) => {
   await page.waitForTimeout(1000);
   await page.getByRole("button", { name: "Kiểm tra" }).click();
   await page.waitForTimeout(1000);
+  // ✅ Kiểm tra thông báo lỗi xuất hiện
+  const errorMessage = page.getByText(
+    "Số tài khoản phải có ít nhất 5 ký tự, vui lòng thử lại"
+  );
+  await expect(errorMessage).toBeVisible();
+
+  // // (Tuỳ chọn) kiểm tra chính xác nội dung
+  // await expect(errorMessage).toHaveText(
+  //   "Số tài khoản phải có ít nhất 5 ký tự, vui lòng thử lại"
+  // );
 });
