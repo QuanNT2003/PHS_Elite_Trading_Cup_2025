@@ -1,0 +1,13 @@
+npx playwright install
+
+npm i -D @playwright/test
+
+tsconfig.json
+{
+    "compilerOptions": {
+      "types": ["@playwright/test"]
+    }
+  }
+
+
+npx playwright codegen -> Ghi test
