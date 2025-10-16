@@ -6,7 +6,7 @@
   --foreground: #171717;
   font-family: "InterVariable", sans-serif;
   line-height: 140%;
-  font-size: 18px;
+  @apply md:text-[18px] text-[14px];
 }
 
 .navlink {

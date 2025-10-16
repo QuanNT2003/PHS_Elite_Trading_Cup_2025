@@ -25,6 +25,7 @@ type InputTextProps = {
   error?: string;
   description?: React.ReactNode;
   show?: boolean;
+  id?: string;
 };
 function InputComp({
   title,
@@ -38,20 +39,22 @@ function InputComp({
   error,
   description,
   show,
+  id,
 }: InputTextProps) {
   return (
-    <div className="ms-2 w-full flex flex-col gap-1">
+    <div className="w-full flex flex-col gap-3 ">
       <div className="font-medium mb-[3px] text-[20px]">
         {title}
         {required && <span className="text-red-500"> *</span>}
       </div>
       <div className="relative w-full">
         <Input
-          className={
+          id={id}
+          className={` w-full rounded-[4px] !font-normal !p-[16px] !text-[18px] !pe-10 gap-[4px] focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none border ${
             error
-              ? "border-[#D83434] rounded-[4px] p-[16px] pe-10 gap-[4px] text-[18px] w-full"
-              : "border-black rounded-[4px] p-[16px] pe-10 gap-[4px] text-[18px] w-full"
-          }
+              ? "border-[#D83434] text-[#D83434] hover:border-[#D83434] hover:border-[1px]"
+              : "border-[#889189] text-[#464646] hover:border-[#8a8a8a] hover:border-[1px]"
+          }`}
           placeholder={placeholder}
           value={value}
           onChange={(e) => {
@@ -69,7 +72,7 @@ function InputComp({
             onClick={() => onChange?.("")}
             className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
           >
-            <X className="w-5 h-5" />
+            <X className=" w-6 h-6" />
           </button>
         )}
       </div>

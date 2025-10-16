@@ -7,17 +7,42 @@ import phs_logo from "@/assets/image/phs_logo.png";
 import uel_logo from "@/assets/image/uel_logo.png";
 import { RegisterPage } from "@/pages/RegisterPage";
 
+import AfterTheEventNotifi from "../afterTheEventNotifi";
+import BeforeTheEventNotifi from "../beforeTheEventNotifi";
+import CompetitionInformationPage from "@/pages/CompetitionInformationPage";
+
 function HeaderComp() {
   const [openMenu, setOpenMenu] = useState(false);
   const [openRegister, setOpenRegister] = useState(false);
+  const [openInformation, setOpenInforamtion] = useState(false);
+  const [openBefore, setOpenBefore] = useState(false);
+  const [openAfter, setOpenAfter] = useState(false);
   const navItems = [
     { to: "/", label: "Giải thưởng" },
     { to: "/rules", label: "Thể lệ" },
     { to: "/connect", label: "Liên hệ" },
   ];
 
+  const [obj, setObj] = useState({
+    accountNumber: "",
+    email: "",
+    phone: "",
+  });
+  const completeRegiter = (account: string, email: string, phone: string) => {
+    // console.log(account);
+    // console.log(email);
+    // console.log(phone);
+
+    setObj({
+      accountNumber: account,
+      email: email,
+      phone: phone,
+    });
+
+    setOpenInforamtion(true);
+  };
   return (
-    <header className="sticky top-0 bg-white z-50">
+    <header className="sticky top-0 bg-white z-50 border-b-1 border-[#4646464a]">
       <div className="flex justify-between items-center py-3 px-6 md:px-10 lg:px-[120px] h-[88px]">
         {/* Logo section */}
         <div className="flex items-center gap-3 md:gap-6 h-full">
@@ -90,7 +115,18 @@ function HeaderComp() {
           </Button>
         </div>
       )}
-      <RegisterPage open={openRegister} setOpen={setOpenRegister} />
+      <RegisterPage
+        open={openRegister}
+        setOpen={setOpenRegister}
+        complete={completeRegiter}
+      />
+      <CompetitionInformationPage
+        open={openInformation}
+        setOpen={setOpenInforamtion}
+        obj={obj}
+      />
+      <BeforeTheEventNotifi open={openBefore} setOpen={setOpenBefore} />
+      <AfterTheEventNotifi open={openAfter} setOpen={setOpenAfter} />
     </header>
   );
 }

@@ -1,8 +1,8 @@
 import { defaultLayout } from "@/components/shared/layout";
-import ConnectPage from "@/pages/ConnectPage";
+// import ConnectPage from "@/pages/ConnectPage";
+// import RulesPage from "@/pages/RulesPage";
 import HomePage from "@/pages/HomePage";
 import NotFoundPage from "@/pages/NotFoundPage";
-import RulesPage from "@/pages/RulesPage";
 
 export type AppRoute = {
   path: string;
@@ -18,12 +18,14 @@ export const routes: AppRoute[] = [
   },
   {
     path: "/rules",
-    component: RulesPage,
+    // component: RulesPage,
+    component: NotFoundPage,
     layout: defaultLayout,
   },
   {
-    path: "/contact",
-    component: ConnectPage,
+    path: "/connect",
+    // component: ConnectPage,
+    component: NotFoundPage,
     layout: defaultLayout,
   },
   {

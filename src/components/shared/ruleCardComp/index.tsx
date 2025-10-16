@@ -21,40 +21,34 @@ type Props = {
 
 export default function RuleCardComp({ items }: Props) {
   return (
-    <div className=" mx-auto px-4">
-      <div className="flex flex-wrap mt-5 justify-center gap-5 ">
+    <div className="mx-auto">
+      <div className="flex flex-wrap justify-center gap-4 ">
         {items.map((item) => (
           <Card
             key={item.id}
-            className="overflow-hidden shadow-none border border-transparent bg-[#ECF6EA] w-[287px] p-0"
+            className="overflow-hidden shadow-none border border-transparent bg-[#ECF6EA] sm:w-[40%] w-[70%] lg:w-[288px] min-w-[288px] p-0"
           >
             <CardContent className="p-0">
               <div className="flex flex-col">
                 {/* Image area */}
-                <div className="w-full flex items-start justify-center bg-white m-0 py-8 h-[161px]">
+                <div className="w-full flex items-start justify-center bg-white m-0 p-10">
                   {item.image}
                 </div>
 
                 {/* Text area */}
-                <div className="w-full p-2 flex flex-col justify-between">
-                  <div>
-                    <div className="flex flex-col gap-3 mb-3 relative">
-                      <Badge className="bg-[#24723B] text-white rounded-md px-3 py-1 text-sm absolute top-[-22px] left-0">
-                        {item.number}
-                      </Badge>
-                      <h3 className="text-xl font-semibold text-[#24723B] mt-4">
-                        {item.title}
-                      </h3>
-                    </div>
 
-                    <p className="text-lg text-[#464646] font-normal">
-                      {item.description}
-                    </p>
+                <div className="w-full p-2 gap-2 mb-[10px] flex flex-col justify-between">
+                  <div className="flex flex-col relative">
+                    <Badge className="bg-[#24723B] text-white rounded-md px-3 py-1 text-sm absolute top-[-22px] left-0">
+                      {item.number}
+                    </Badge>
+                    <h3 className="text-xl font-semibold text-[#24723B] mt-4">
+                      {item.title}
+                    </h3>
                   </div>
 
-                  {/* optional CTA area if needed */}
-                  <div className="mt-4">
-                    {/* placeholder for link or small note */}
+                  <div className="lg:text-[16px] text-[#464646] font-normal">
+                    {item.description}
                   </div>
                 </div>
               </div>
