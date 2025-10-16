@@ -5,14 +5,22 @@ test("Test_WrongFormat_AccountNumber", async ({ page }) => {
   await page.waitForTimeout(1000);
   await page.getByRole("button", { name: "Đăng ký" }).click();
   await page.waitForTimeout(1000);
-  await page.locator("#AccountNumber").click();
-  await page.locator("#AccountNumber").fill("046575474");
+  await page.getByRole("textbox", { name: "Nhập số tài khoản" }).click();
+  await page
+    .getByRole("textbox", { name: "Nhập số tài khoản" })
+    .fill("02C543523532");
   await page.waitForTimeout(1000);
-  await page.locator("#Email").click();
-  await page.locator("#Email").fill("ngotrungquan@gmail.com");
+  await page
+    .getByRole("textbox", { name: "Nhập email đăng ký tài khoản" })
+    .click();
+  await page
+    .getByRole("textbox", { name: "Nhập email đăng ký tài khoản" })
+    .fill("ngotrungquan@gmail.com");
   await page.waitForTimeout(1000);
-  await page.locator("#Phone").click();
-  await page.locator("#Phone").fill("0365754657");
+  await page.getByRole("textbox", { name: "Nhập số điện thoại" }).click();
+  await page
+    .getByRole("textbox", { name: "Nhập số điện thoại" })
+    .fill("0376846855");
   await page.waitForTimeout(1000);
   await page.getByRole("button", { name: "Kiểm tra" }).click();
   await page.waitForTimeout(1000);

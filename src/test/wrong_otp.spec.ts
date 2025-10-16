@@ -1,12 +1,13 @@
 import { test, expect } from "@playwright/test";
 
-test("Test_Invalid_AccountNumber", async ({ page }) => {
+test("Test_Wrong_Otp", async ({ page }) => {
   await page.goto("http://localhost:3001/");
-  await page.waitForTimeout(1000);
   await page.getByRole("button", { name: "Đăng ký" }).click();
   await page.waitForTimeout(1000);
   await page.getByRole("textbox", { name: "Nhập số tài khoản" }).click();
-  await page.getByRole("textbox", { name: "Nhập số tài khoản" }).fill("022C");
+  await page
+    .getByRole("textbox", { name: "Nhập số tài khoản" })
+    .fill("022C543523532");
   await page.waitForTimeout(1000);
   await page
     .getByRole("textbox", { name: "Nhập email đăng ký tài khoản" })
@@ -22,14 +23,13 @@ test("Test_Invalid_AccountNumber", async ({ page }) => {
   await page.waitForTimeout(1000);
   await page.getByRole("button", { name: "Kiểm tra" }).click();
   await page.waitForTimeout(1000);
-  // ✅ Kiểm tra thông báo lỗi xuất hiện
+  await page.getByRole("textbox", { name: "Nhập OTP" }).click();
+  await page.getByRole("textbox", { name: "Nhập OTP" }).fill("856467");
+  await page.waitForTimeout(1000);
+  await page.getByRole("button", { name: "Tiếp theo" }).click();
+  await page.waitForTimeout(1000);
   const errorMessage = page.getByText(
-    "Số tài khoản phải có ít nhất 5 ký tự, vui lòng thử lại"
+    "Mã OTP không chính xác, vui lòng nhập lại"
   );
   await expect(errorMessage).toBeVisible();
-
-  // // (Tuỳ chọn) kiểm tra chính xác nội dung
-  // await expect(errorMessage).toHaveText(
-  //   "Số tài khoản phải có ít nhất 5 ký tự, vui lòng thử lại"
-  // );
 });

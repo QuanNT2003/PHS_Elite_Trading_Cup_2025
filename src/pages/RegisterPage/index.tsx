@@ -168,14 +168,14 @@ export function RegisterPage({ open, setOpen, complete }: props) {
         if (otp === resultOtp) {
           complete?.(account, email, phone);
         } else {
-          setErrorOtp("Nhập sai otp, vui lòng lấy lại otp");
+          setErrorOtp("Mã OTP không chính xác, vui lòng nhập lại");
         }
       }
     }
   };
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
-      <AlertDialogContent className="sm:max-w-[540px] bg-white flex flex-col gap-6 p-6">
+      <AlertDialogContent className="sm:max-w-[540px] bg-white max-h-[90%] flex flex-col gap-6 p-6 overflow-x-auto">
         <AlertDialogHeader className="relative">
           <AlertDialogTitle className="text-[#24723B] font-semibold text-[32px] text-center">
             ĐĂNG KÝ
@@ -190,8 +190,8 @@ export function RegisterPage({ open, setOpen, complete }: props) {
         </AlertDialogDescription>
         <div className="flex flex-col gap-6">
           <InputComp
-            id="AccountNumber"
             value={account}
+            placeholder="Nhập số tài khoản"
             onChange={onChangeAccount}
             title="Số tài khoản"
             error={errorAccount}
@@ -209,16 +209,16 @@ export function RegisterPage({ open, setOpen, complete }: props) {
             }
           />
           <InputComp
-            id="Email"
             value={email}
+            placeholder="Nhập email đăng ký tài khoản"
             onChange={onChangeEmail}
             title="Email"
             description="Là Email đăng ký tài khoản chứng khoán."
             error={errorEmail}
           />
           <InputComp
-            id="Phone"
             value={phone}
+            placeholder="Nhập số điện thoại"
             onChange={onChangePhone}
             error={errorPhone}
             title="Số điện thoại"
@@ -226,8 +226,8 @@ export function RegisterPage({ open, setOpen, complete }: props) {
           />
           {stepTwo && (
             <InputComp
-              id="Otp"
               value={otp}
+              placeholder="Nhập OTP"
               onChange={onChangeOtp}
               title="Otp"
               description={
@@ -254,7 +254,6 @@ export function RegisterPage({ open, setOpen, complete }: props) {
 
         <AlertDialogFooter>
           <button
-            id="CheckButton"
             disabled={buttonDisable}
             onClick={() => onClick()}
             className={`w-full rounded-sm py-4 px-12 text-center text-white gap-2.5 text-[20px] font-medium cursor-pointer 
