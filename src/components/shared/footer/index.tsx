@@ -19,6 +19,7 @@ const connectItem = [
     img: faceIcon,
     title: "Fanpage PHS",
     content: "Chứng khoán Phú Hưng - PHS",
+    link: "https://www.facebook.com/PhuHungSecuritiesCorporation",
   },
   { img: mailIcon, title: "Email", content: "support@phs.vn" },
 ];
@@ -78,10 +79,14 @@ function FooterComp() {
               <Mail className="w-4 h-4 " />
               <span>support@phs.vn</span>
             </div>
-            <div className="flex items-center gap-2">
+            <a
+              className="flex items-center gap-2"
+              href="https://www.phs.vn/"
+              target="_blank"
+            >
               <Globe className="w-4 h-4 " />
               <span>www.phs.vn</span>
-            </div>
+            </a>
           </div>
         </div>
         <div className="hidden md:block w-[270px]"></div>
@@ -91,13 +96,18 @@ function FooterComp() {
           </div>
           <div className="text-[#D1D5DB] flex flex-col gap-3">
             {connectItem.map((item, index) => (
-              <div className="flex my-[6px] cursor-pointer" key={index}>
+              <a
+                href={item.link}
+                target="_blank"
+                className="flex my-[6px] cursor-pointer"
+                key={index}
+              >
                 <img src={item.img} className="h-[20px] w-[20px] me-2" />
                 <div>
                   <div className="font-semibold text-[14px]">{item.title}</div>
                   <div className="font-normal text-[14px]">{item.content}</div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -124,7 +134,7 @@ function FooterComp() {
               src={qr_img}
               className="h-[116px] w-[116px] me-3 cursor-pointer"
             />
-            <div>
+            <div className="flex flex-col gap-5">
               <img src={as_img} className="h-[48px] w-[165px] cursor-pointer" />
               <img src={gp_img} className="h-[48px] w-[165px] cursor-pointer" />
             </div>

@@ -25,6 +25,7 @@ type InputTextProps = {
   error?: string;
   description?: React.ReactNode;
   show?: boolean;
+  id?: string;
 };
 function InputComp({
   title,
@@ -38,6 +39,7 @@ function InputComp({
   error,
   description,
   show,
+  id,
 }: InputTextProps) {
   return (
     <div className="w-full flex flex-col gap-3 ">
@@ -47,6 +49,7 @@ function InputComp({
       </div>
       <div className="relative w-full">
         <Input
+          id={id}
           className={` w-full rounded-[4px] !font-normal !p-[16px] !text-[18px] !pe-10 gap-[4px] focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none border ${
             error
               ? "border-[#D83434] text-[#D83434] hover:border-[#D83434] hover:border-[1px]"

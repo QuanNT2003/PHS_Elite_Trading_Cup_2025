@@ -7,7 +7,7 @@ function IntroduceComp() {
       <img src={dot_bg} className="absolute top-0 left-0" />
       <img src={dot_bg} className="absolute bottom-0 right-0" />
       <div
-        className="h-[160px] lg:w-[340px] w-[60%] bg-[#066B4D] absolute right-1 lg:right-30 top-2 "
+        className="h-[160px] lg:w-[340px] w-[60%] bg-[#066B4D] absolute right-1 lg:right-25 top-2 "
         style={{
           clipPath: "polygon(0 10%, 100% 0, 100% 100%, 0 100%)",
         }}
@@ -33,7 +33,7 @@ function IntroduceComp() {
         <div className="lg:w-[40%] mx-3 w-full min-h-[350px] relative lg:text-[18px] text-[#464646]  ">
           <img
             src={phs_cup_logo}
-            className="absolute top-[-35px] left-0 w-[220px]"
+            className="absolute top-[-100px] left-0 w-[220px]"
           />
 
           <div className="bg-white px-3 pb-4 pt-16 flex flex-col gap-3">

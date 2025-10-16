@@ -190,6 +190,7 @@ export function RegisterPage({ open, setOpen, complete }: props) {
         </AlertDialogDescription>
         <div className="flex flex-col gap-6">
           <InputComp
+            id="AccountNumber"
             value={account}
             onChange={onChangeAccount}
             title="Số tài khoản"
@@ -208,6 +209,7 @@ export function RegisterPage({ open, setOpen, complete }: props) {
             }
           />
           <InputComp
+            id="Email"
             value={email}
             onChange={onChangeEmail}
             title="Email"
@@ -215,6 +217,7 @@ export function RegisterPage({ open, setOpen, complete }: props) {
             error={errorEmail}
           />
           <InputComp
+            id="Phone"
             value={phone}
             onChange={onChangePhone}
             error={errorPhone}
@@ -223,6 +226,7 @@ export function RegisterPage({ open, setOpen, complete }: props) {
           />
           {stepTwo && (
             <InputComp
+              id="Otp"
               value={otp}
               onChange={onChangeOtp}
               title="Otp"
@@ -250,6 +254,7 @@ export function RegisterPage({ open, setOpen, complete }: props) {
 
         <AlertDialogFooter>
           <button
+            id="CheckButton"
             disabled={buttonDisable}
             onClick={() => onClick()}
             className={`w-full rounded-sm py-4 px-12 text-center text-white gap-2.5 text-[20px] font-medium cursor-pointer 
