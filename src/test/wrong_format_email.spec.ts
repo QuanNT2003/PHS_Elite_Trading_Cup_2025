@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("Test_WrongFormat_AccountNumber", async ({ page }) => {
+test("Test_WrongFormat_Email", async ({ page }) => {
   await page.goto("http://localhost:3001/");
   await page.waitForTimeout(1000);
   await page.getByRole("button", { name: "Đăng ký" }).click();
